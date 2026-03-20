@@ -1,0 +1,62 @@
+redisbungee: false
+
+servers:
+  "play.someserver.xyz":
+    motds:
+      - line1: "abcdef"
+        line2: "ghijkl"
+
+        # THIS IS NOT A CHANCE SYSTEM. The weight is used to determine how many times the motd
+        # is added to the list of motds, and then a random motd is selected from that list.
+        weight: 2
+
+      # You can add multiple motds per server, and they will be randomly selected when a player pings the server.
+      - line1: "mnopqr"
+        line2: "stuvwx"
+
+        # You can also overwrite the hover message per-motd, which will be used instead of the
+        # default hover message.
+        hover:
+          - "This is a hover"
+          - "message! Will display"
+          - "over the player count :p"
+
+    # The server icon to use. This is omittable, and if not provided, the default minecraft
+    # image will be used.
+    icon: "icons/orenda.png"
+
+  # You can add multiple IPs, which changes the MOTD displayed depending on the IP the player pings.
+  # Useful for proxy servers, where you want to display different MOTDs depending on the IP provided.
+  "forced.someserver.xyz":
+    motds:
+      - line1: "This section will be completely"
+        line2: "ignored, and ping will be fetched from downstream server."
+    icon: "icons/orenda.png"
+    # These will overwrite lines of the MOTD, after randomly selecting one of the MOTDs above.
+    # forceLine1: ""
+    # forceLine2: ""
+
+  # The last section is the default section, which is used when no other sections match the IP the player pings.
+  #
+  # This section is omittable, and if not provided, the player will see a "Could not connect to server" message
+  # when pinging an IP that is not listed in the config.
+  "default":
+    motds:
+      - line1: "This is the default MOTD!"
+        line2: "<pride:pan>gradients! much wow."
+        hover:
+          - "Hover message for the default MOTD!"
+          - "You can have as many lines as you want in the hover message, and they will be displayed in order."
+        weight: 1
+      - line1: "This is another default MOTD!"
+        line2: "<pride:bi>Much pride, such colors!"
+        hover:
+          - "Hover message for the second default MOTD!"
+          - "Isn't it great that you can have multiple MOTDs per server?"
+        weight: 1
+    icon: "icons/orenda.png"
+    hover:
+        - "This is the default hover message!"
+        - "It will be used for all MOTDs that don't have a custom hover message."
+    #forceLine1: "<gradient:rainbow>Forced Line 1!"
+    #forceLine2: "<gradient:rainbow>Forced Line 2!"
