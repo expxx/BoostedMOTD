@@ -14,7 +14,7 @@ data class ServerConfig(
     val motds: List<LinesConfig>,
 
     val icon: String? = null,
-    val hover: List<String>? = listOf(),
+    val hover: List<String>? = null,
     val forceLine1: String? = null,
     val forceLine2: String? = null,
     val pingPassthrough: Boolean = false
