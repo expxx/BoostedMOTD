@@ -22,6 +22,7 @@ class PingManager(
         val config = core.getConfig()
         val server: ServerConfig = config.servers.filter { it.key == hostAddress }.firstNotNullOfOrNull { it.value }
             ?: config.servers["default"] ?: return NO_MOTD_FOUND
+        val  default: ServerConfig = config.servers["default"]!!
 
         val randomMotdSelection = mutableListOf<LinesConfig>()
         server.motds.forEach { motd ->
@@ -40,8 +41,9 @@ class PingManager(
             line2 = server.forceLine2?.replace("{selection}", selection.line2 ?: "")
                 ?: selection.line2
                 ?: "",
-            icon = server.icon?.let { dataDir.resolve(it) },
-            hover = selection.hover ?: server.hover ?: listOf()
+            icon = server.icon?.let { dataDir.resolve(it) }
+                ?: default.icon?.let { dataDir.resolve(it) },
+            hover = selection.hover ?: server.hover ?: default.hover ?: listOf()
         )
         if (config.debug) logger.info("Constructed PingResponse: $resp")
         return resp
