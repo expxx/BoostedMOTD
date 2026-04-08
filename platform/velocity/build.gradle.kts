@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.camyzed"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -40,7 +40,7 @@ tasks {
     }
 
     shadowJar {
-        archiveFileName.set("BoostedMOTD-Velocity.jar")
+        archiveFileName.set("BoostedMOTD-Velocity-$version.jar")
 
         relocate("com.charleskorn.kaml", "shadow.kaml")
         relocate("dev.faststats", "shadow.faststats")

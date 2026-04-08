@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "dev.camyzed"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -39,7 +39,7 @@ tasks {
     }
 
     shadowJar {
-        archiveFileName.set("BoostedMOTD-Paper.jar")
+        archiveFileName.set("BoostedMOTD-Paper-$version.jar")
 
         relocate("com.charleskorn.kaml", "shadow.kaml")
         relocate("dev.faststats", "shadow.faststats")
@@ -48,5 +48,14 @@ tasks {
         relocate("okio", "shadow.okio")
         relocate("net.thauvin.erik.urlencoder", "shadow.urlencoder")
         relocate("it.krzeminski.snakeyaml", "shadow.snakeyaml")
+    }
+
+    processResources {
+        val props = mapOf(
+            "version" to project.version,
+        )
+        filesMatching("plugin.yml") {
+            expand(props)
+        }
     }
 }
