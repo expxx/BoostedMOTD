@@ -1,0 +1,6 @@
+name: BoostedMOTD
+version: '$version'
+
+main: dev.camyzed.boostedmotd.paper.PaperPlugin
+api-version: '1.21'
+load: POSTWORLD

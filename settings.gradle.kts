@@ -4,3 +4,4 @@ plugins {
 rootProject.name = "BoostedMOTD"
 include("common")
 include("platform:velocity")
+include("platform:paper")
